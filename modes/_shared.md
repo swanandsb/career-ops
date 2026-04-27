@@ -42,6 +42,23 @@ The evaluation uses 6 blocks (A-F) with a global score of 1-5:
 - 3.5-3.9 → Decent but not ideal, apply only if specific reason
 - Below 3.5 → Recommend against applying (see Ethical Use in CLAUDE.md)
 
+### Sponsorship & work authorization — HARD FAIL (overrides skills match)
+
+When reading the **full JD** (not title alone), apply **before** treating the numeric score as actionable:
+
+| Trigger in posting | Result |
+|---------------------|--------|
+| Phrases such as **"no sponsorship"**, **"no visa sponsorship"**, **"sponsorship not available"**, **"we do not sponsor"**, or equivalent **explicit denial** of visa support | **HARD FAIL** |
+| **"Must be authorized to work"** / **"must have work authorization"** in **[country]** **without** an accompanying statement that the employer **will sponsor** or **supports visa transfer** (e.g., H-1B) for the role | **HARD FAIL** |
+
+**On HARD FAIL:**
+
+1. State clearly in **Block D (Red flags)** that the role is **not viable** for candidates who require visa sponsorship / H-1B transfer (cite `config/profile.yml` → `visa_status` when relevant).
+2. Set the **global score to 1.0** (or document **N/A — HARD FAIL**) and **do not recommend applying**, regardless of how strong the technical fit would otherwise be.
+3. Do **not** treat a high archetype or keyword match as overturning this rule.
+
+If the JD is ambiguous, **assume no sponsorship** unless there is explicit positive sponsorship language — especially when `config/profile.yml` indicates **H-1B transfer required**.
+
 ## Posting Legitimacy (Block G)
 
 Block G assesses whether a posting is likely a real, active opening. It does NOT affect the 1-5 global score -- it is a separate qualitative assessment.

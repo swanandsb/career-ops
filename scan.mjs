@@ -134,6 +134,36 @@ function buildTitleFilter(titleFilter) {
   };
 }
 
+/** When portals.yml sets `location: "US only"`, keep jobs whose location string looks US-based. */
+function buildLocationFilter(locationSetting) {
+  if (!locationSetting || typeof locationSetting !== 'string') {
+    return () => true;
+  }
+  const mode = locationSetting.toLowerCase();
+  if (!mode.includes('us')) {
+    return () => true;
+  }
+
+  const nonUs = /\b(united kingdom|u\.k\.|uk\b|germany|france|spain|italy|netherlands|poland|india|ireland|canada|mexico|brazil|australia|singapore|japan|china|sweden|norway|denmark|finland|switzerland|austria|belgium|portugal|israel|uae|emea|apac|latam|dublin|london|berlin|munich|paris|toronto|vancouver|sydney|tel aviv|bangalore|hyderabad)\b/i;
+
+  return (loc) => {
+    const l = (loc || '').trim();
+    if (!l) return true;
+    if (nonUs.test(l)) return false;
+    const lower = l.toLowerCase();
+    const usSignals =
+      /\b(united states|u\.s\.a\.|u\.s\.|usa|u\.s\b|north america)\b/.test(lower) ||
+      /\bremote\b.*\b(us|u\.s|usa|united states)\b/i.test(l) ||
+      /\b(remote|hybrid|on-?site)\b.*\b(AL|AK|AZ|AR|CA|CO|CT|DE|FL|GA|HI|IA|ID|IL|IN|KS|KY|LA|MA|MD|ME|MI|MN|MO|MS|MT|NC|ND|NE|NH|NJ|NM|NV|NY|OH|OK|OR|PA|RI|SC|SD|TN|TX|UT|VA|VT|WA|WI|WV|WY)\b/.test(l) ||
+      /,\s*(AL|AK|AZ|AR|CA|CO|CT|DE|FL|GA|HI|IA|ID|IL|IN|KS|KY|LA|MA|MD|ME|MI|MN|MO|MS|MT|NC|ND|NE|NH|NJ|NM|NV|NY|OH|OK|OR|PA|RI|SC|SD|TN|TX|UT|VA|VT|WA|WI|WV|WY)\s*$/i.test(l) ||
+      /\b(new york|nyc|san francisco|sf\b|los angeles|chicago|boston|seattle|austin|denver|atlanta|jersey city|miami|philadelphia|houston|dallas|phoenix|detroit|minneapolis|portland|dc\b|washington)\b/i.test(lower);
+    if (/\bremote\b/i.test(l) && !nonUs.test(l) && !/\b(emea|apac|latam|india|europe|uk\b)\b/i.test(l)) {
+      return true;
+    }
+    return usSignals;
+  };
+}
+
 // ── Dedup ───────────────────────────────────────────────────────────
 
 function loadSeenUrls() {
@@ -264,6 +294,7 @@ async function main() {
   const config = parseYaml(readFileSync(PORTALS_PATH, 'utf-8'));
   const companies = config.tracked_companies || [];
   const titleFilter = buildTitleFilter(config.title_filter);
+  const locationFilter = buildLocationFilter(config.location);
 
   // 2. Filter to enabled companies with detectable APIs
   const targets = companies
@@ -285,6 +316,7 @@ async function main() {
   const date = new Date().toISOString().slice(0, 10);
   let totalFound = 0;
   let totalFiltered = 0;
+  let totalLocationFiltered = 0;
   let totalDupes = 0;
   const newOffers = [];
   const errors = [];
@@ -299,6 +331,10 @@ async function main() {
       for (const job of jobs) {
         if (!titleFilter(job.title)) {
           totalFiltered++;
+          continue;
+        }
+        if (!locationFilter(job.location)) {
+          totalLocationFiltered++;
           continue;
         }
         if (seenUrls.has(job.url)) {
@@ -335,6 +371,7 @@ async function main() {
   console.log(`Companies scanned:     ${targets.length}`);
   console.log(`Total jobs found:      ${totalFound}`);
   console.log(`Filtered by title:     ${totalFiltered} removed`);
+  console.log(`Filtered by location:   ${totalLocationFiltered} removed`);
   console.log(`Duplicates:            ${totalDupes} skipped`);
   console.log(`New offers added:      ${newOffers.length}`);
 

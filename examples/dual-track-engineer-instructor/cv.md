@@ -1,80 +1,93 @@
-# CV -- Sam Rivera
 
-**Location:** Berlin, Germany (remote-friendly, EU timezones)
-**Email:** sam@example.com
-**LinkedIn:** linkedin.com/in/sam-rivera-example
-**Portfolio:** sam-rivera.example.dev
-**GitHub:** github.com/sam-rivera-example
+Swanand Barsawade 
+Jersey City, New Jersey • 619-552-5943 • swanand@brownguyintech.com
+ 
+https://www.brownguyintech.com • https://www.linkedin.com/in/swanand-barsawade
 
-## Professional Summary
 
-Two jobs at once for the last four years: senior AI engineer at a knowledge-graph SaaS (60K LOC of the AI subsystem, agent infra handling 4M+ events/month), and lead instructor at an applied AI bootcamp (5,200 teaching hours, 80 alumni placed into ML/AI roles, 92% completion across 11 cohorts). I keep doing both because the bootcamp work forces me to write code people can actually read, and the production work keeps the curriculum from becoming a fairy tale. I will take a role that is mostly engineering, mostly teaching, or both.
 
-## Recent engineering (last 12 months)
+SUMMARY
 
-- Wrote a planner / executor / critic loop on top of LangGraph for the internal agent platform. HITL checkpoints, Redis-backed checkpointer, ~14K LOC TypeScript on Bun. Average task-completion latency went from 9.2s to 5.7s after the executor stopped re-running the planner on retries (this was the bug that cost me a weekend).
-- `agent-skills-kit` (fictional example) is the open source spinoff of the same loop. 2.4K stars, 11 outside contributors. I mostly maintain it on Sundays.
-- 47 merged PRs across two production codebases in the last year. Happy to walk through any of them in an interview, including the ones I would write differently now.
 
-## Work Experience
+With 5+ years of experience in data science, machine learning, and data mining, complemented by a strong command of Excel for managing structured and unstructured datasets, I bring expertise to any project. Proficient in Agile and Waterfall methodologies, I seamlessly adapt to varying project requirements, ensuring successful outcomes. My skill set includes advanced knowledge in hypothesis testing, regression analysis, clustering, classification techniques, decision trees, SVM, and time series analysis, empowering precise predictive modeling. Moreover, I excel in crafting impactful visualizations through Tableau and Power BI, enhancing data interpretation and presentation. Additionally, I excel in managing and optimizing MySQL and MS SQL Server databases, streamlining data retrieval for efficiency.
 
-### Knowledge-Graph SaaS GmbH -- Berlin
-**Senior AI Engineer / Team Lead**
-2022-2026
+SKILLS
 
-- Owned the AI subsystem of a Neo4j-backed enterprise knowledge graph product. The AI layer was 97K LOC at handover; I wrote or rewrote around 60K of that.
-- Embedding pipeline: chunker, dedupe, Azure OpenAI embed, Chroma + Neo4j sync. Throughput was ~50 docs/min when I picked it up. After I rewrote it around batched async and a real connection pool, it sat at 1,800 docs/min in production. The bottleneck the whole time was a single sync HTTP client nobody had thought to look at.
-- Built the agent layer with LangChain and LangGraph using the 12-factor agents pattern. Redis-backed checkpointer, observability through LangSmith. 4M+ agent events/month at peak.
-- Ran a team of three engineers and one designer. Weekly architecture review, pair programming on Tuesdays, an on-call rotation that went from "we don't have one" to a 30-minute response SLO with a written playbook.
-- Built the customer-facing eval dashboard: latency, cost-per-query, hallucination rate, retrieval precision and recall. We walked through it with customers in their monthly business reviews.
 
-### Applied AI Bootcamp -- Berlin (parallel role, same window)
-**Lead Instructor, AI Engineering Track**
-2022-2026
+Methodologies: SDLC, Agile, Waterfall                                                 Database Management: MySQL, SQL Server
+Programming Language: Python, R, SQL                                                  Cloud Platforms: AWS, Azure, Google Cloud Platform,            
+Natural Language Processing: NLTK, SpaCy                                              QuickSight
+Visualization Tools: Tableau, Power BI, Microsoft Excel                               Version Control: Git, GitHub
+Data Science and Machine Learning: Hypothesis Testing,                                Collaborative Tools: Trello
+Classification Techniques, A/B testing, Regression, Decision Trees,	              Communication Skills: Data Storytelling, Visualization, 
+Support Vector Machines (SVM), ETL (Extract, Transform, Load),                        Technical Documentation
+Neural Networks, Time-series analysis, Unsupervised Clustering,                       Packages: NumPy, Pandas, Matplotlib, SciPy, ggplot2,                                      
+Exploratory Data Analysis (EDA), Jupyter Notebook                                     Seaborn, Plotly, Scikit-learn, TensorFlow, PyTorch, XGBoost   
 
-- Wrote and ran a 4-week AI Engineering curriculum: Bun, TypeScript, LangChain, LangGraph, Redis, Neo4j, LangSmith, MCP, Anthropic SDK. Six cohorts, average size 14.
-- Wrote and ran a 4-week Applied Python for AI curriculum: Python, FastAPI, ChromaDB, Gradio, HuggingFace Transformers, wandb. Five cohorts.
-- 5,200 teaching hours total across both tracks (lecture + lab + 1:1 office hours). I keep a real spreadsheet, not a vibes count.
-- 80 alumni placed into AI/ML engineering roles so far. I personally maintain the outcomes tracker because the school does not.
-- NPS 71. Completion rate 92%, against an industry baseline of 60-75% for intensive bootcamps.
-- Wrote the assessment rubric and the capstone-week format the school later adopted across all technical tracks. I lost an argument about timeboxing the capstone and was right two cohorts later.
 
-### Mid-stage AI Consultancy -- Remote
-**ML Engineer**
-2019-2022
+WORK EXPERIENCE
 
-- Nine client engagements: NLP classification, two recommender systems, and two early LLM prototypes back when GPT-3 was the only game in town.
-- Wrote the internal eval harness the rest of the consultancy adopted. Cut "vibes-check" review cycles down to a 20-minute structured CI run.
-- Mentored four junior engineers. Two are now senior ICs at FAANG-tier companies. This is the job where I figured out I liked teaching as much as building.
 
-### Mobile Games Studio -- Remote
-**Backend Engineer**
-2017-2019
+Process Intelligence, Consultant | Ashling Partners, Chicago, IL	     Sep 2024 - Present
 
-- Backend services for a live-ops mobile game: matchmaking, leaderboards, IAP reconciliation. Python, Postgres, Redis.
-- Rewrote the internal SDK onboarding doc. New-hire ramp-up went from three weeks to eight days. The old doc had a 14-step setup that nobody on the current team had actually run end-to-end.
+Led successful process mining deployments, developing, documenting, validating, and streamlining 91TB of data models and analyses.
+Managed end-to-end project lifecycles, from kickoff through training, ensuring timely delivery and alignment with customer requirements
+Optimized $60M in customer savings by applying Celonis OCPM to uncover insights and support strategic decision-making
 
-## Projects
+Analyst | Allure Marketing, NYC, NY	   Jun 2024 - Sep 2024
 
-- `agent-skills-kit` (fictional example, open source) -- TypeScript scaffolding for agent skills with HITL approval gates. 2.4K GitHub stars, 11 outside contributors, ~120 weekly active developers. Newsletter mentions in TLDR AI and Ben's Bites.
-- `pplx-embed-local-runner` (fictional example, open source) -- a small local runner for open embedding models with a drop-in OpenAI-compatible API. 610 stars. Three of the bootcamp lab exercises run against it instead of paid APIs.
-- AI Engineering 4-Week Intensive -- the full curriculum: syllabus, 38 lecture scripts, 16 graded projects on Bronze / Silver / Gold / Diamond difficulty tiers. Used in six cohorts. Written by me, debugged by the students.
+Integrated Agile practices within the Waterfall model to enable iteration, cut product cycles by 27.3%, and accelerate project deliveries.
+Fortified a data strategy on AWS, deploying cost-efficient cloud solutions to lower infrastructure costs
+Orchestrated ETL processes by overseeing data extraction and transformation, reducing processing time by 19.4%
 
-## Education
+Data Scientist | Evolution International, NYC, NY	    Jul 2023 - Jun 2024
 
-- BSc Computer Science, TU Example (2017)
-- Self-directed: Andrew Ng MLOps specialization, fast.ai Part 1+2, hand-rolled implementations of attention + RAG from scratch.
+Achieved a 31.4% increase in consumer revenue by designing and implementing a data pipeline, leveraging BigQuery as the database and Celonis as the analytical tool to facilitate value oriented financial analysis for the organization
+Spearheaded implementation to automate the process by Jenkins and Airflow DAGs, processing 5TB data daily for small enterprise
 
-## Speaking and writing
+Slashed 3 hours of developer’s time by creating a Python and R solution for Excel data pre-processing
 
-- "Why your bootcamp's LLM module is wrong" -- BerlinML meetup, 2025. ~120 in the room.
-- "Production agents, the boring parts" -- internal talk at two partner companies. The boring parts are timeouts and idempotency.
-- About 12 long-form blog posts on agent architecture, eval design, and teaching technical material to working engineers. The eval-design one is the only one I'd link unprompted.
+Data Science Intern | Evolution International, NYC, NY	     Jun 2022 - Aug 2022
 
-## Skills
+Engineered an ETL pipeline to streamline data ingestion and transformation processes, enhancing efficiency by 29.6% through the development of 47 data visualizations in Tableau. 
+Collaborated with cross-functional teams to ensure data integrity and smooth workflow integration while keeping stakeholders informed about the status of the product
+Built an OLAP predictive model for forecasting recommendations for a/b tests for campaign improvements
 
-Engineering: TypeScript, Python (daily), Go (I can read it and write small things), SQL. LangChain, LangGraph, Anthropic SDK, HuggingFace Transformers/Trainer, scikit-learn, PyTorch (basics, not research-level), MCP. Bun, Node.js, FastAPI, Gradio, Redis, Neo4j, ChromaDB, Postgres, Docker, GitHub Actions. LangSmith, Grafana, custom eval dashboards, wandb.
+Software Engineer - Data | San Diego State University, San Diego, CA                                                                                   Aug 2021 - May 2023
 
-Teaching: curriculum design with Bronze/Silver/Gold/Diamond difficulty tiering, capstone formats, lab vs lecture split. Delivery: lecture, hands-on lab, 1:1 office hours, code review at scale, pair programming. I have taught working engineers (career-changers), university CS students, and internal teams. Assessment work: rubrics, capstone projects, portfolio review, mock-interview design.
+Led a project for quantifying blood flow velocity by analyzing videos of blood flow in veins using Image processing and recognition
+Secured 80.7% accuracy in proving that blood velocity is higher in the center of blood vessels, leveraging OpenCV’s optical flow algorithm.
+Performed statistical analysis using linear and logistic regression, implemented data preprocessing and pipelining with AWS and Databricks for data transformation, utilized Synapse for analytics and Blob storage for data management.
 
-Other: public speaking in German and English, technical writing, hiring loop design, mentorship.
+PROJECTS
+
+
+Advertisement Recommendation System 	      Oct 2022 - Dec 2022
+
+Developed a centralized website leveraging NLP to consolidate information on advertisement platforms
+
+Established a centralized data lake on AWS S3, optimizing structured and semi-structured data retrieval time by 25%
+
+Accomplished a 53.7% improvement in efficiency and accuracy of data storage and extraction by gaining insights from users
+
+Designed and executed a QuickSight dashboard for detailed analysis of video categories and trending metrics
+
+Data/Tech Stack: Python, ETL, AWS s3, Athena, Lambda, QuickSight
+
+Yelp Data Analysis	      Apr 2022 - May 2022
+
+Evaluated the Yelp dataset by application of k-means algorithms, VADER lexicon, classification, logistics regression, clustering, and neural networks for identifying metrics and parameters to ensure restaurant success
+Revamped an interactive Looker Studio dashboard to enable in-depth analysis across various parameters
+
+Implemented use cases utilizing Google Maps API to find ideal locations.
+
+Data/Tech Stack: Python, ETL, mage-ai, Google Cloud Platform, BigQuery, Looker Studio
+
+
+EDUCATION
+
+
+Master of Science in Computer Science, San Diego State University, San Diego, CA (GPA: 3.8/4.0)				      Aug 2021 - May 2023
+
+
+Bachelor of Engineering in Computer Engineering, University of Pune, Pune, India (GPA: 3.9/4.0)                               Aug 2016 - May 2020
