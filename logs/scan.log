@@ -4,3 +4,45 @@
 /bin/sh: node: command not found
 /bin/sh: node: command not found
 /bin/sh: node: command not found
+Scanning 74 companies via API (24 skipped — no API detected)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Portal Scan — 2026-04-27
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Companies scanned:     74
+Total jobs found:      3975
+Filtered by title:     3836 removed
+Filtered by location:   111 removed
+Duplicates:            26 skipped
+New offers added:      2
+
+Errors (20):
+  ✗ Databricks: This operation was aborted
+  ✗ Anthropic: This operation was aborted
+  ✗ PolyAI: This operation was aborted
+  ✗ Parloa: This operation was aborted
+  ✗ Intercom: This operation was aborted
+  ✗ Hume AI: This operation was aborted
+  ✗ ElevenLabs: This operation was aborted
+  ✗ Deepgram: This operation was aborted
+  ✗ Vapi: This operation was aborted
+  ✗ Bland AI: This operation was aborted
+  ✗ Ada: HTTP 404
+  ✗ Factorial: HTTP 404
+  ✗ Tinybird: HTTP 404
+  ✗ Travelperk: HTTP 404
+  ✗ Forto: HTTP 404
+  ✗ Weights & Biases: HTTP 404
+  ✗ Clarity AI: HTTP 404
+  ✗ Vinted: HTTP 404
+  ✗ Runway: HTTP 404
+  ✗ Sierra: This operation was aborted
+
+New offers:
+  + Palantir | Forward Deployed AI Engineer | New York, NY
+  + Legora | Senior Analytics Engineer - Finance  | New York City
+
+Results saved to data/pipeline.md and data/scan-history.tsv
+
+→ Run /career-ops pipeline to evaluate new offers.
+→ Share results and get help: https://discord.gg/8pRpHETxa4
