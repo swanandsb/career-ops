@@ -5,7 +5,7 @@ Use this as the canonical structure for ATS-optimized CV output in `templates/cv
 ## Hard Layout Constraints
 
 - Single-column layout only (no grids, sidebars, or multi-column blocks)
-- Letter page size, target exactly 1 page
+- Letter page size, optimized for compact output (1 to 1.5 pages acceptable)
 - Margins: `0.45in` on all sides
 - Typography:
   - Name: `20px` (Space Grotesk)
@@ -21,19 +21,20 @@ Use this as the canonical structure for ATS-optimized CV output in `templates/cv
 ## Required Section Order (ATS Standard)
 
 1. Name + contact line (`phone | email | linkedin | portfolio | location`)
-2. Summary (italic text, max 3 lines, no "Summary" label)
+2. Summary (italic text, no "Summary" label)
 3. Skills (plain text lines by category, e.g. `Languages: Python, SQL, R`)
 4. Experience (reverse chronological)
-5. Projects (max 2 projects)
+5. Projects
 6. Education
 7. Certifications (inline list, not stacked rows)
 
-## Content Truncation Rules
+## Content Completeness Rules
 
-- If content risks spilling to page 2, truncate bullets first, then project/entry detail lines.
-- Do not remove whole sections.
-- Experience bullets: max 2 bullets per role, 1 line each.
-- Projects: max 2 entries, 1 line description each, no separate tech-stack lines.
+- Never truncate text with CSS (`ellipsis`, `line-clamp`, `overflow: hidden` on text content).
+- Let content flow naturally across pages when needed.
+- Limit bullet volume in content generation, not presentation styling.
+- Experience bullets: max 3 bullets per role (enforced in mode/prompt logic, not CSS hiding).
+- Keep sections complete; do not hide full entries in CSS.
 
 ## Visual Style Rules
 
