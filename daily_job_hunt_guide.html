@@ -1,0 +1,135 @@
+
+<style>
+  .guide { padding: 1rem 0; font-family: var(--font-sans); max-width: 640px; }
+  .day-header { font-size: 18px; font-weight: 500; color: var(--color-text-primary); margin: 1.5rem 0 0.75rem; }
+  .step { display: flex; gap: 12px; margin-bottom: 10px; align-items: flex-start; }
+  .num { width: 24px; height: 24px; border-radius: 50%; background: var(--color-background-secondary); border: 0.5px solid var(--color-border-secondary); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: var(--color-text-secondary); flex-shrink: 0; margin-top: 2px; }
+  .step-content { flex: 1; }
+  .step-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 2px; }
+  .step-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; }
+  .cmd { font-family: var(--font-mono); font-size: 12px; background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: 6px; padding: 2px 8px; color: var(--color-text-primary); display: inline-block; margin-top: 4px; }
+  .divider { border: none; border-top: 0.5px solid var(--color-border-tertiary); margin: 1.25rem 0; }
+  .badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 500; margin-bottom: 6px; }
+  .badge-morning { background: var(--color-background-info); color: var(--color-text-info); }
+  .badge-apply { background: var(--color-background-success); color: var(--color-text-success); }
+  .badge-done { background: var(--color-background-secondary); color: var(--color-text-secondary); }
+  .note { font-size: 12px; color: var(--color-text-secondary); background: var(--color-background-secondary); border-left: 3px solid var(--color-border-secondary); padding: 8px 12px; border-radius: 0 6px 6px 0; margin-top: 8px; line-height: 1.5; }
+</style>
+
+<div class="guide">
+
+  <div class="badge badge-morning">☀️ Every morning (5 min)</div>
+
+  <div class="step">
+    <div class="num">1</div>
+    <div class="step-content">
+      <div class="step-title">Open a new Terminal window</div>
+      <div class="step-desc">The regular Terminal app on your Mac. Not Cursor.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">2</div>
+    <div class="step-content">
+      <div class="step-title">Check if the scan ran overnight</div>
+      <div class="cmd">cat ~/Documents/GitHub/career-ops/logs/scan.log | tail -20</div>
+      <div class="step-desc" style="margin-top:6px;">If you see "New offers added: X" — great, new jobs were found. If you see errors — the scan had trouble, run it manually in step 4.</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+  <div class="badge badge-apply">🎯 When you want to apply (15-30 min)</div>
+
+  <div class="step">
+    <div class="num">3</div>
+    <div class="step-content">
+      <div class="step-title">Open Claude Code in the career-ops folder</div>
+      <div class="cmd">cd ~/Documents/GitHub/career-ops && claude</div>
+      <div class="step-desc" style="margin-top:6px;">Wait for the prompt to appear. This is your AI job assistant.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">4</div>
+    <div class="step-content">
+      <div class="step-title">Run the pipeline to score today's jobs</div>
+      <div class="cmd">/career-ops pipeline</div>
+      <div class="step-desc" style="margin-top:6px;">This reads all the new job links and gives each one a score out of 5. Takes 15-20 minutes. You can do other things while it runs.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">5</div>
+    <div class="step-content">
+      <div class="step-title">Look at scores — only care about 4.0 or higher</div>
+      <div class="step-desc">When pipeline finishes it shows a table. Only apply to roles that scored 4.0/5 or above. Everything below that — ignore it.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">6</div>
+    <div class="step-content">
+      <div class="step-title">Generate a tailored resume for each good role</div>
+      <div class="step-desc">Paste the job URL directly into Claude Code:</div>
+      <div class="cmd">https://jobs.ashbyhq.com/company/job-id-here</div>
+      <div class="step-desc" style="margin-top:6px;">It will make a PDF just for that company. Wait for it to finish before pasting the next URL.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">7</div>
+    <div class="step-content">
+      <div class="step-title">Apply manually at each job link</div>
+      <div class="step-desc">Open the job URL in your browser. Upload the PDF from the <span class="cmd">output/</span> folder. The file is named something like <span class="cmd">cv-swanand-barsawade-anthropic-2026-04-28.pdf</span></div>
+      <div class="note">⚠️ The computer never applies for you. You always click Submit yourself.</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+  <div class="badge badge-done">🔁 If scan didn't run automatically</div>
+
+  <div class="step">
+    <div class="num">8</div>
+    <div class="step-content">
+      <div class="step-title">Run scan manually in Claude Code</div>
+      <div class="cmd">/career-ops scan</div>
+      <div class="step-desc" style="margin-top:6px;">This checks 70+ companies for new job postings matching your profile. Takes about 2 minutes.</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+  <div class="badge badge-done">📋 Quick reference</div>
+
+  <div class="step">
+    <div class="num">—</div>
+    <div class="step-content">
+      <div class="step-title">Where are my resumes?</div>
+      <div class="cmd">~/Documents/GitHub/career-ops/output/</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">—</div>
+    <div class="step-content">
+      <div class="step-title">Where are all my applications tracked?</div>
+      <div class="cmd">~/Documents/GitHub/career-ops/data/applications.md</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">—</div>
+    <div class="step-content">
+      <div class="step-title">What jobs are waiting to be evaluated?</div>
+      <div class="cmd">~/Documents/GitHub/career-ops/data/pipeline.md</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="num">—</div>
+    <div class="step-content">
+      <div class="step-title">Claude Code not opening? Run this first:</div>
+      <div class="cmd">ulimit -n 65536 && cd ~/Documents/GitHub/career-ops && claude</div>
+    </div>
+  </div>
+
+</div>

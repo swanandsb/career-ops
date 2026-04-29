@@ -10,9 +10,9 @@
    - US/Canada → `letter`
    - Resto del mundo → `a4`
 6. Detecta arquetipo del rol → adapta framing
-7. Reescribe Professional Summary inyectando keywords del JD + exit narrative bridge ("Built and sold a business. Now applying systems thinking to [domain del JD].")
+7. Reescribe Professional Summary en 2-3 oraciones naturales (sin listas ni keyword dumping). Oracion 1: que hace la persona y donde lo ha hecho. Oracion 2: 1-2 resultados concretos con metricas. Oracion 3: senal de portfolio o trabajo tecnico relevante.
 8. Selecciona top 3-4 proyectos más relevantes para la oferta
-9. Reordena bullets de experiencia por relevancia al JD
+9. Dentro de cada rol, reordena bullets por relevancia al JD si aplica; **nunca** reordenes los bloques de trabajo: el orden de empresas/roles sigue siempre la fecha (paso obligatorio abajo).
 10. Construye competency grid desde requisitos del JD (6-8 keyword phrases)
 11. Inyecta keywords naturalmente en logros existentes (NUNCA inventa)
 12. Genera HTML completo desde template + contenido personalizado
@@ -30,6 +30,27 @@
 - UTF-8, texto seleccionable (no rasterizado)
 - Sin tablas anidadas
 - Keywords del JD distribuidas: Summary (top 5), primer bullet de cada rol, Skills section
+- **Work Experience (orden obligatorio):** los bloques `.job` deben listarse en **orden cronologico inverso estricto por fecha de inicio** (el rol mas reciente primero). Esta regla **anula** cualquier otro criterio (relevancia al JD, impacto, narrativa). No reordenar roles por keywords del JD.
+- Visa: no incluir estado de visa en el CV (ni `{{SUMMARY_TEXT}}`, ni contacto, ni ninguna seccion). El candidato lo comenta en conversacion.
+- Title aliasing: mantener el titulo original como principal y agregar 1-2 equivalentes estandar entre parentesis. Ejemplo: `Applied AI Consultant (AI Engineer / ML Engineer)`.
+- Acronym expansion (primera aparicion): usar `Retrieval-Augmented Generation (RAG)`, `Large Language Model (LLM)`, `Model Context Protocol (MCP)`; en apariciones siguientes usar solo sigla.
+- Bullet length: maximo 140 caracteres por bullet; si excede, dividir en dos bullets.
+- One achievement per bullet: si un bullet une varias clausulas con `;` o `and`, partirlo en bullets separados. Maximo un metric / logro por bullet.
+- Production keywords: en al menos 2 bullets en total (entre todos los roles), usar de forma genuina `production environment` o `production deployment` (no forzar si el trabajo no fue produccion).
+- Skills additions: en la seccion Skills, incluir estas etiquetas si aun no aparecen (en lineas por categoria): `Vector Databases`, `Embeddings`, `Semantic Search`, `Model Evaluation`, `Scalable Systems`.
+- Experience technologies line: despues de los bullets de cada rol, agregar una linea `Technologies: ...` autoextraida de los bullets.
+- Project naming: agregar descripcion funcional entre parentesis despues del nombre del proyecto. Ejemplo: `OpenClaw Foundry (zero-trust multi-agent AI platform)`.
+- Project bullets: cada proyecto como lista de 2-3 bullets (`<ul><li>...</li></ul>`), no parrafo unico; cada bullet = una decision tecnica o un resultado.
+- Post-validacion: despues de escribir el HTML, ejecutar `node scripts/validate-resume.mjs /path/to/cv-....html` y corregir fallos antes de `generate-pdf.mjs`.
+
+### Empresas tier-1 AI (Anthropic, OpenAI, etc.): ingenieria practica y fiabilidad
+
+- Lenguaje de estrategia: evitar frases tipo "owned AI strategy", "set AI strategy", "drove strategy". Sustituir por verbos de ejecucion: "designed and deployed", "built and operated", "led implementation of", "shipped".
+- Primer bullet del rol mas reciente: debe destacar sistemas en produccion, flujos LLM o sistemas agenticos con un resultado medible o comprobable. Sin abrebocas vagos ("focused on", "worked on" sin outcome).
+- Senal de evaluation: incluir al menos un bullet (en cualquier rol) que mencione model evaluation, failure modes, fiabilidad (reliability), o guardrails, solo si hay trabajo real que lo respalde.
+- Proyectos: evitar tono de marketing. No usar "not a demo", "production-grade showcase". Preferir "built for production use" o formulaciones sobre reliability cuando aplique.
+- Skills: fusionar categorias redundantes; no crear seccion aparte (p. ej. "ML Fundamentals") si esos terminos ya estan en Applied AI / LLMs. Mantener visibles: LLMs, RAG, APIs, deployment, evaluation, vector databases, embeddings (segun verdad del CV).
+- Tono: tecnico y basado en hechos. Sin superlativos, sin lenguaje comercial, sin autopromocion; que hablen metricas y decisiones tecnicas.
 
 ## Diseño del PDF
 
@@ -45,12 +66,12 @@
 ## Orden de secciones (optimizado "6-second recruiter scan")
 
 1. Header (nombre grande, gradiente, contacto, link portfolio)
-2. Professional Summary (3-4 líneas, keyword-dense)
-3. Core Competencies (6-8 keyword phrases en flex-grid)
-4. Work Experience (cronológico inverso)
-5. Projects (top 3-4 más relevantes)
-6. Education & Certifications
-7. Skills (idiomas + técnicos)
+2. Professional Summary (2-3 oraciones naturales: rol/contexto, resultados con metricas, portfolio signal)
+3. Skills (lineas por categoria, sin pills ni grid)
+4. Work Experience (cronologico inverso **por fecha de inicio**; sin excepciones)
+5. Projects
+6. Education
+7. Certifications
 
 ## Estrategia de keyword injection (ético, basado en verdad)
 
@@ -78,19 +99,17 @@ Usar el template en `cv-template.html`. Reemplazar los placeholders `{{...}}` co
 | `{{PORTFOLIO_DISPLAY}}` | [from profile.yml] (o /es según idioma) |
 | `{{LOCATION}}` | [from profile.yml] |
 | `{{SECTION_SUMMARY}}` | Professional Summary / Resumen Profesional |
-| `{{SUMMARY_TEXT}}` | Summary personalizado con keywords |
-| `{{SECTION_COMPETENCIES}}` | Core Competencies / Competencias Core |
-| `{{COMPETENCIES}}` | `<span class="competency-tag">keyword</span>` × 6-8 |
+| `{{SUMMARY_TEXT}}` | Summary de 2-3 oraciones naturales (rol/contexto, metricas, portfolio signal; sin listas de terminos) |
 | `{{SECTION_EXPERIENCE}}` | Work Experience / Experiencia Laboral |
 | `{{EXPERIENCE}}` | HTML de cada trabajo con bullets reordenados |
 | `{{SECTION_PROJECTS}}` | Projects / Proyectos |
-| `{{PROJECTS}}` | HTML de top 3-4 proyectos |
+| `{{PROJECTS}}` | HTML de proyectos con nombre + descripcion funcional en parentesis |
 | `{{SECTION_EDUCATION}}` | Education / Formación |
 | `{{EDUCATION}}` | HTML de educación |
 | `{{SECTION_CERTIFICATIONS}}` | Certifications / Certificaciones |
 | `{{CERTIFICATIONS}}` | HTML de certificaciones |
 | `{{SECTION_SKILLS}}` | Skills / Competencias |
-| `{{SKILLS}}` | HTML de skills |
+| `{{SKILLS}}` | HTML de skills en lineas por categoria |
 
 ## Canva CV Generation (optional)
 
