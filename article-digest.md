@@ -32,7 +32,7 @@ Compact proof points for career-ops evaluation. **Precedence:** this file over `
 - Documented models for audit/reuse at enterprise scale
 
 **Proof points:**
-- Celonis: Value Realization Expert; Solution Creation Expert; Process Mining Analyst Training
+- Celonis: Value Realization Expert; Solution Creation Expert; Process Mining Analyst; Value Assessment Expert
 - UiPath: Agentic Discovery Framework Fundamentals
 - Same portfolio reference as above
 
